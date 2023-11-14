@@ -15,7 +15,7 @@
     <div class="div1"></div>
   </div>
 
-  <div class="flex div_cu_bulinuta">
+  <div class="flex div_cu_bulinuta ">
     <div class="circle">
     </div>
   <div class="div2">
