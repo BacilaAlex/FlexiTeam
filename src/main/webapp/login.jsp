@@ -25,12 +25,13 @@
         var username = document.getElementById("usernameInput").value;
         var password = document.getElementById("passwordInput").value;
 
-        // Make an AJAX request to the servlet
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Handle the response from the servlet if needed
+            if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(xhr.responseText);
+            }
+            if(xhr.responseText.includes("Successful")){
+                window.location.replace("/FlexiTeam-1.0-SNAPSHOT/");
             }
         };
         xhr.open("POST", "/FlexiTeam-1.0-SNAPSHOT/login", true);
