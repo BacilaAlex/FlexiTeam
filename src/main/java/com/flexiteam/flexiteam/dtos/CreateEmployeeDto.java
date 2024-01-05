@@ -7,18 +7,18 @@ import com.flexiteam.flexiteam.commons.WorkingTime;
 import java.util.Date;
 
 public class CreateEmployeeDto {
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private Date dateOfBirth;
-    private String address;
-    private SalaryClass salaryClass;
-    private String monthlySalary;
-    private String bonus;
-    private TaxClass taxClass;
-    private String religion;
-    private WorkingTime workingTime;
-    private String bankAccount;
+    String firstName;
+    String lastName;
+    String gender;
+    Date dateOfBirth;
+    String address;
+    SalaryClass salaryClass;
+    String monthlySalary;
+    String bonus;
+    TaxClass taxClass;
+    String religion;
+    WorkingTime workingTime;
+    String bankAccount;
 
     public CreateEmployeeDto(String firstName, String lastName, String gender, Date dateOfBirth, String address, SalaryClass salaryClass, String monthlySalary, String bonus, TaxClass taxClass, String religion, WorkingTime workingTime, String bankAccount) {
         this.firstName = firstName;

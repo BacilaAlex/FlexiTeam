@@ -1,7 +1,7 @@
 package com.flexiteam.flexiteam.servlets;
 
-import com.flexiteam.flexiteam.dtos.UserDto;
-import com.flexiteam.flexiteam.ejb.UsersBean;
+import com.flexiteam.flexiteam.dtos.EmployeeDto;
+import com.flexiteam.flexiteam.ejb.EmployeeBean;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -20,16 +20,16 @@ import java.util.List;
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
         httpMethodConstraints = {@HttpMethodConstraint(value = "POST",
                 rolesAllowed = {"WRITE_USERS"})})
-@WebServlet(name = "Users", value = "/Users")
-public class Users extends HttpServlet {
+@WebServlet(name = "Employees", value = "/Employees")
+public class Employees extends HttpServlet {
     @Inject
-    UsersBean usersBean;
+    EmployeeBean employeeBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<UserDto> users = usersBean.findAllUsers();
-        request.setAttribute("users", users);
-        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+        List<EmployeeDto> employees = employeeBean.findAllEmployees();
+        request.setAttribute("employees", employees);
+        request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
     }
 
     @Override

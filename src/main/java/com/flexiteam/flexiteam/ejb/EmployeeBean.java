@@ -2,33 +2,26 @@ package com.flexiteam.flexiteam.ejb;
 
 import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
 import com.flexiteam.flexiteam.dtos.EmployeeDto;
+import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
 import com.flexiteam.flexiteam.entities.Employee;
-import com.parking.parkinglot.common.UserDto;
-import com.parking.parkinglot.entities.User;
-import com.parking.parkinglot.entities.UserGroup;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
 @Stateless
-public class EmployeeBean {
+public class EmployeeBean implements IEmployeeBean {
     private static final Logger LOG = Logger.getLogger(EmployeeBean.class.getName());
-
-    @Inject
-    PasswordBean passwordBean;
 
     @PersistenceContext
     EntityManager entityManager;
 
-    public List<EmployeeDto> findAllUsers() {
+    public List<EmployeeDto> findAllEmployees() {
         LOG.info("findAllEmployees");
         try {
             TypedQuery<Employee> typedQuery = entityManager.createQuery("SELECT e FROM Employee e", Employee.class);
@@ -62,7 +55,7 @@ public class EmployeeBean {
         return employeeDto;
     }
 
-    public void createEmployee(CreateEmployeeDto createEmployee) {
+    public Employee createEmployee(CreateEmployeeDto createEmployee) {
         LOG.info("createEmployee");
         Employee newEmployee = new Employee();
 
@@ -80,5 +73,6 @@ public class EmployeeBean {
         newEmployee.setBankAccount(createEmployee.getBankAccount());
 
         entityManager.persist(newEmployee);
+        return newEmployee;
     }
 }
