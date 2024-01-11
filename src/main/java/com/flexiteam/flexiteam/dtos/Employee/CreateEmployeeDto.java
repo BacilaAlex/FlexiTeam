@@ -1,4 +1,4 @@
-package com.flexiteam.flexiteam.dtos;
+package com.flexiteam.flexiteam.dtos.Employee;
 
 import com.flexiteam.flexiteam.commons.SalaryClass;
 import com.flexiteam.flexiteam.commons.TaxClass;

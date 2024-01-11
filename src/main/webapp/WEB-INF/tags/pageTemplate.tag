@@ -112,5 +112,6 @@
 <body>
 <%--<img src="https://i.postimg.cc/kMVjtzww/Background-Image.png">--%>
 <jsp:doBody/>
+<script src="${pageContext.request.contextPath}/scripts/form-validation.js"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
-package com.flexiteam.flexiteam.servlets;
+package com.flexiteam.flexiteam.servlets.Employee;
 
 import com.flexiteam.flexiteam.commons.SalaryClass;
 import com.flexiteam.flexiteam.commons.TaxClass;
 import com.flexiteam.flexiteam.commons.WorkingTime;
-import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
-import com.flexiteam.flexiteam.ejb.EmployeeBean;
+import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
+import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,7 +21,7 @@ import java.util.Date;
 public class AddEmployee extends HttpServlet {
 
     @Inject
-    EmployeeBean employeeBean;
+    IEmployeeBean employeeBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

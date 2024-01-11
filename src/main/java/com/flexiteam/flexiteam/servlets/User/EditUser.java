@@ -1,8 +1,8 @@
-package com.flexiteam.flexiteam.servlets;
+package com.flexiteam.flexiteam.servlets.User;
 
-import com.flexiteam.flexiteam.dtos.EmployeeDto;
-import com.flexiteam.flexiteam.dtos.UserDto;
-import com.flexiteam.flexiteam.ejb.EmployeeBean;
+import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
+import com.flexiteam.flexiteam.dtos.User.UserDto;
+import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
 import com.flexiteam.flexiteam.ejb.UsersBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -21,7 +21,7 @@ public class EditUser extends HttpServlet {
     UsersBean usersBean;
 
     @Inject
-    EmployeeBean employeeBean;
+    IEmployeeBean _employeeBean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +29,7 @@ public class EditUser extends HttpServlet {
         UserDto user = usersBean.findUserById(userId);
         request.setAttribute("user", user);
 
-        List<EmployeeDto> employees = employeeBean.findAllEmployees();
+        List<EmployeeDto> employees = _employeeBean.findAllEmployees();
         request.setAttribute("employees", employees);
 
         request.getRequestDispatcher("/editUser.jsp").forward(request, response);

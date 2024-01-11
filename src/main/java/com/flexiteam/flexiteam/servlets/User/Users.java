@@ -1,6 +1,6 @@
-package com.flexiteam.flexiteam.servlets;
+package com.flexiteam.flexiteam.servlets.User;
 
-import com.flexiteam.flexiteam.dtos.UserDto;
+import com.flexiteam.flexiteam.dtos.User.UserDto;
 import com.flexiteam.flexiteam.ejb.UsersBean;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;

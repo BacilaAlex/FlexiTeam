@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 @Entity
 public class User {
+    @Id
+    @GeneratedValue
     private Long id;
     private String username;
     private String email;
@@ -13,9 +15,6 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-
-    @Id
-    @GeneratedValue
     public Long getId() {
         return id;
     }

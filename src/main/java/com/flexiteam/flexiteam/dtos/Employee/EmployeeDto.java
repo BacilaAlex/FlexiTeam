@@ -1,4 +1,4 @@
-package com.flexiteam.flexiteam.dtos;
+package com.flexiteam.flexiteam.dtos.Employee;
 
 import com.flexiteam.flexiteam.commons.SalaryClass;
 import com.flexiteam.flexiteam.commons.TaxClass;
@@ -20,6 +20,22 @@ public class EmployeeDto {
     String religion;
     WorkingTime workingTime;
     String bankAccount;
+
+    public EmployeeDto(Long id, String firstName, String lastName, String gender, Date dateOfBirth, String address, SalaryClass salaryClass, String monthlySalary, String bonus, TaxClass taxClass, String religion, WorkingTime workingTime, String bankAccount) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.salaryClass = salaryClass;
+        this.monthlySalary = monthlySalary;
+        this.bonus = bonus;
+        this.taxClass = taxClass;
+        this.religion = religion;
+        this.workingTime = workingTime;
+        this.bankAccount = bankAccount;
+    }
 
     public Long getId() {
         return id;
@@ -71,21 +87,5 @@ public class EmployeeDto {
 
     public String getBankAccount() {
         return bankAccount;
-    }
-
-    public EmployeeDto(Long id, String firstName, String lastName, String gender, Date dateOfBirth, String address, SalaryClass salaryClass, String monthlySalary, String bonus, TaxClass taxClass, String religion, WorkingTime workingTime, String bankAccount) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.salaryClass = salaryClass;
-        this.monthlySalary = monthlySalary;
-        this.bonus = bonus;
-        this.taxClass = taxClass;
-        this.religion = religion;
-        this.workingTime = workingTime;
-        this.bankAccount = bankAccount;
     }
 }

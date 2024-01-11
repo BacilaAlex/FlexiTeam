@@ -1,4 +1,4 @@
-package com.flexiteam.flexiteam.dtos;
+package com.flexiteam.flexiteam.dtos.User;
 
 
 public class UserDto {
