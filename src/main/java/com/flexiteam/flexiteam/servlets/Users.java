@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @DeclareRoles({"READ_USERS", "WRITE_USERS"})
@@ -34,5 +35,16 @@ public class Users extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String[] userIdsString = request.getParameterValues("user_ids");
+
+        if (userIdsString != null) {
+            List<Long> userIds = new ArrayList<>();
+            for (String userId : userIdsString) {
+                userIds.add(Long.parseLong(userId));
+            }
+            usersBean.deleteUsersById(userIds);
+        }
+
+        response.sendRedirect(request.getContextPath() + "/Users");
     }
 }

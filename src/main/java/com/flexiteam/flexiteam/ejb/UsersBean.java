@@ -1,8 +1,9 @@
 package com.flexiteam.flexiteam.ejb;
 
 import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
+import com.flexiteam.flexiteam.dtos.EmployeeDto;
 import com.flexiteam.flexiteam.dtos.UserDto;
-import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
+import com.flexiteam.flexiteam.entities.Employee;
 import com.flexiteam.flexiteam.entities.User;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
@@ -20,7 +21,7 @@ public class UsersBean {
     private static final Logger LOG = Logger.getLogger(UsersBean.class.getName());
 
     @Inject
-    IEmployeeBean _employeeBean;
+    EmployeeBean employeeBean;
     @Inject
     PasswordBean passwordBean;
 
@@ -53,8 +54,34 @@ public class UsersBean {
         newUser.setUsername(username);
         newUser.setEmail(email);
         newUser.setPassword(passwordBean.convertToSha256(password));
-        newUser.setEmployee(_employeeBean.createEmployee(createEmployee));
+        newUser.setEmployee(employeeBean.createEmployee(createEmployee));
         entityManager.persist(newUser);
         return newUser;
+    }
+
+    public UserDto findUserById(Long id) {
+        for(UserDto user : findAllUsers()){
+            if(user.getId().equals(id))
+                return user;
+        }
+        return null;
+    }
+
+    public void updateUser(Long userId, String username, String email, String password, Long employeeId) {
+        User user = entityManager.find(User.class, userId);
+
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        Employee employee = entityManager.find(Employee.class, employeeId);
+        user.setEmployee(employee);
+    }
+
+    public void deleteUsersById(List<Long> userIds) {
+        for (Long userId : userIds) {
+            User user = entityManager.find(User.class, userId);
+            entityManager.remove(user);
+        }
     }
 }

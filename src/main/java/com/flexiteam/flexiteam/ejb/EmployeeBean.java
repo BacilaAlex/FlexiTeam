@@ -1,8 +1,10 @@
 package com.flexiteam.flexiteam.ejb;
 
+import com.flexiteam.flexiteam.commons.SalaryClass;
+import com.flexiteam.flexiteam.commons.TaxClass;
+import com.flexiteam.flexiteam.commons.WorkingTime;
 import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
 import com.flexiteam.flexiteam.dtos.EmployeeDto;
-import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
 import com.flexiteam.flexiteam.entities.Employee;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
@@ -15,7 +17,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Stateless
-public class EmployeeBean implements IEmployeeBean {
+public class EmployeeBean {
     private static final Logger LOG = Logger.getLogger(EmployeeBean.class.getName());
 
     @PersistenceContext
@@ -74,5 +76,36 @@ public class EmployeeBean implements IEmployeeBean {
 
         entityManager.persist(newEmployee);
         return newEmployee;
+    }
+
+    public EmployeeDto findEmployeeById(Long id) {
+        for(EmployeeDto employee : findAllEmployees()){
+            if(employee.getId().equals(id))
+                return employee;
+        }
+        return null;
+    }
+
+    public void updateEmployee(Long employeeId, String firstName, String lastName, String address, SalaryClass salaryClass, String monthlySalary,
+                               String bonus, TaxClass taxClass, String religion, WorkingTime workingTime, String bankAccount) {
+        Employee employee = entityManager.find(Employee.class, employeeId);
+
+        employee.setFirstName(firstName);
+        employee.setLastName(lastName);
+        employee.setAddress(address);
+        employee.setSalaryClass(salaryClass);
+        employee.setMonthlySalary(monthlySalary);
+        employee.setBonus(bonus);
+        employee.setTaxClass(taxClass);
+        employee.setReligion(religion);
+        employee.setWorkingTime(workingTime);
+        employee.setBankAccount(bankAccount);
+    }
+
+    public void deleteEmployeesById(List<Long> employeeIds) {
+        for (Long employeeId : employeeIds) {
+            Employee employee = entityManager.find(Employee.class, employeeId);
+            entityManager.remove(employee);
+        }
     }
 }
