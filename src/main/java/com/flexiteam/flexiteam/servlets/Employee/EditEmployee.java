@@ -4,7 +4,7 @@ import com.flexiteam.flexiteam.commons.SalaryClass;
 import com.flexiteam.flexiteam.commons.TaxClass;
 import com.flexiteam.flexiteam.commons.WorkingTime;
 import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
-import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
+import com.flexiteam.flexiteam.ejb.EmployeeBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,12 +18,12 @@ import java.io.IOException;
 public class EditEmployee extends HttpServlet {
 
     @Inject
-    IEmployeeBean _employeeBean;
+    EmployeeBean employeeBean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long employeeId = Long.parseLong(request.getParameter("id"));
-        EmployeeDto employee = _employeeBean.findEmployeeById(employeeId);
+        EmployeeDto employee = employeeBean.findEmployeeById(employeeId);
         request.setAttribute("employee", employee);
 
         request.getRequestDispatcher("/editEmployee.jsp").forward(request, response);
@@ -44,7 +44,7 @@ public class EditEmployee extends HttpServlet {
             WorkingTime workingTime = WorkingTime.valueOf(request.getParameter("working_time"));
             String bankAccount = request.getParameter("bank_account");
 
-            _employeeBean.updateEmployee(employeeId, firstName, lastName, address, salaryClass, monthlySalary, bonus, taxClass, religion, workingTime, bankAccount);
+            employeeBean.updateEmployee(employeeId, firstName, lastName, address, salaryClass, monthlySalary, bonus, taxClass, religion, workingTime, bankAccount);
             response.sendRedirect(request.getContextPath() + "/Employees");
         } catch (Exception e) {
             e.printStackTrace();

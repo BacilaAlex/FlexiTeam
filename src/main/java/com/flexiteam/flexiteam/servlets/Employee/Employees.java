@@ -1,7 +1,7 @@
 package com.flexiteam.flexiteam.servlets.Employee;
 
 import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
-import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
+import com.flexiteam.flexiteam.ejb.EmployeeBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,14 +13,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "Employee", value = "/Employee")
-public class Employee extends HttpServlet {
+@WebServlet(name = "Employees", value = "/Employees")
+public class Employees extends HttpServlet {
     @Inject
-    IEmployeeBean _employeeBean;
+    EmployeeBean employeeBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<EmployeeDto> employees = _employeeBean.findAllEmployees();
+        List<EmployeeDto> employees = employeeBean.findAllEmployees();
         request.setAttribute("employees",employees);
         request.getRequestDispatcher("/WEB-INF/pages/employee/employee.jsp").forward(request, response);
     }
@@ -34,7 +34,7 @@ public class Employee extends HttpServlet {
             for (String employeeId : employeeIdsString) {
                 employeeIds.add(Long.parseLong(employeeId));
             }
-            _employeeBean.deleteEmployeesById(employeeIds);
+            employeeBean.deleteEmployeesById(employeeIds);
         }
 
         response.sendRedirect(request.getContextPath() + "/Employees");

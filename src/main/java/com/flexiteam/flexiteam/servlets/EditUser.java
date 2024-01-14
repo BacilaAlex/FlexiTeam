@@ -1,7 +1,7 @@
 package com.flexiteam.flexiteam.servlets;
 
-import com.flexiteam.flexiteam.dtos.EmployeeDto;
-import com.flexiteam.flexiteam.dtos.UserDto;
+import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
+import com.flexiteam.flexiteam.dtos.User.UserDto;
 import com.flexiteam.flexiteam.ejb.EmployeeBean;
 import com.flexiteam.flexiteam.ejb.UsersBean;
 import jakarta.inject.Inject;
