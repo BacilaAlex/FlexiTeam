@@ -3,6 +3,9 @@
 <html>
 <head>
     <style>
+        .gap-2{
+            gap:4px;
+        }
         .flex{
             display: flex;
         }
