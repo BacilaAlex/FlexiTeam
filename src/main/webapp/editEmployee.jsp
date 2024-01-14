@@ -57,48 +57,36 @@
       <div class="col-md-6 mb-3">
         <label for="salary_class" class="form-label">Salary Class</label>
         <select name="salary_class" class="customer-select d-block w-100" id="salary_class" required>
-          <option value="">Choose...</option>
-          <c:forEach items="${SalaryClass}" var="salaryClass">
+          <c:forEach items="${employee.salaryClass.values()}" var="salaryClass">
             <option value="${salaryClass}" ${employee.salaryClass == salaryClass ? 'selected' : ''}>
                 ${salaryClass}
             </option>
           </c:forEach>
         </select>
-        <div class="invalid-feedback">
-          Please select a Salary Class.
-        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="tax_class" class="form-label">Tax Class</label>
         <select name="tax_class" class="customer-select d-block w-100" id="tax_class" required>
-          <option value="">Choose...</option>
-          <c:forEach items="${TaxClass.values()}" var="taxClass">
+          <c:forEach items="${employee.taxClass.values()}" var="taxClass">
             <option value="${taxClass}" ${employee.taxClass == taxClass ? 'selected' : ''}>
                 ${taxClass}
             </option>
           </c:forEach>
         </select>
-        <div class="invalid-feedback">
-          Please select a Tax Class.
-        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="working_time" class="form-label">Working Time</label>
         <select name="working_time" class="customer-select d-block w-100" id="working_time" required>
-          <option value="">Choose...</option>
-          <c:forEach items="${WorkingTime.values()}" var="workingTime">
+          <c:forEach items="${employee.workingTime.values()}" var="workingTime">
             <option value="${workingTime}" ${employee.workingTime == workingTime ? 'selected' : ''}>
                 ${workingTime}
             </option>
           </c:forEach>
         </select>
-        <div class="invalid-feedback">
-          Please select a Working Time.
-        </div>
       </div>
     </div>
     <hr class="mb-4">
