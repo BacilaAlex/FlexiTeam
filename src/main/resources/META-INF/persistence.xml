@@ -5,7 +5,8 @@
              version="3.0">
     <persistence-unit name="default">
         <jta-data-source>jdbc/FlexiTeam</jta-data-source>
-        <class>com.flexiteam.entities.User</class>
+        <class>com.flexiteam.flexiteam.entities.Employee</class>
+        <class>com.flexiteam.flexiteam.entities.User</class>
 
         <properties>
             <property name="jakarta.persistence.schema-generation.database.action" value="create-or-extend-tables"/>
