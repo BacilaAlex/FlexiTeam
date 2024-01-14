@@ -85,7 +85,7 @@ public class Employee {
     public void setAddress(String address) {
         this.address = address;
     }
-
+  
     public SalaryClass getSalaryClass() {
         return salaryClass;
     }
@@ -133,7 +133,7 @@ public class Employee {
     public void setWorkingTime(WorkingTime workingTime) {
         this.workingTime = workingTime;
     }
-
+  
     public String getBankAccount() {
         return bankAccount;
     }

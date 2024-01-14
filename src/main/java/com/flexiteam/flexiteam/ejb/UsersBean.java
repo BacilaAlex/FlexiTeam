@@ -1,5 +1,6 @@
 package com.flexiteam.flexiteam.ejb;
 
+import com.flexiteam.flexiteam.dtos.EmployeeDto;
 import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
 import com.flexiteam.flexiteam.dtos.User.UserDto;
 import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
@@ -22,6 +23,7 @@ public class UsersBean {
 
     @Inject
     IEmployeeBean _employeeBean;
+
     @Inject
     PasswordBean passwordBean;
 
