@@ -1,8 +1,9 @@
 package com.flexiteam.flexiteam.ejb;
 
-import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
 import com.flexiteam.flexiteam.dtos.EmployeeDto;
-import com.flexiteam.flexiteam.dtos.UserDto;
+import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
+import com.flexiteam.flexiteam.dtos.User.UserDto;
+import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
 import com.flexiteam.flexiteam.entities.Employee;
 import com.flexiteam.flexiteam.entities.User;
 import jakarta.ejb.EJBException;
@@ -21,7 +22,8 @@ public class UsersBean {
     private static final Logger LOG = Logger.getLogger(UsersBean.class.getName());
 
     @Inject
-    EmployeeBean employeeBean;
+    IEmployeeBean _employeeBean;
+
     @Inject
     PasswordBean passwordBean;
 
@@ -54,7 +56,7 @@ public class UsersBean {
         newUser.setUsername(username);
         newUser.setEmail(email);
         newUser.setPassword(passwordBean.convertToSha256(password));
-        newUser.setEmployee(employeeBean.createEmployee(createEmployee));
+        newUser.setEmployee(_employeeBean.createEmployee(createEmployee));
         entityManager.persist(newUser);
         return newUser;
     }

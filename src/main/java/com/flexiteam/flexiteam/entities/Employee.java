@@ -8,18 +8,33 @@ import java.util.Date;
 
 @Entity
 public class Employee {
+    @Id
+    @GeneratedValue
     private Long id;
+    @Basic
     private String firstName;
+    @Basic
     private String lastName;
+    @Basic
     private String gender;
+    @Temporal(TemporalType.DATE)
+    @Basic
     private Date dateOfBirth;
+    @Basic
     private String address;
+    @Basic
     private SalaryClass salaryClass;
+    @Basic
     private String monthlySalary;
+    @Basic
     private String bonus;
+    @Basic
     private TaxClass taxClass;
+    @Basic
     private String religion;
+    @Basic
     private WorkingTime workingTime;
+    @Basic
     private String bankAccount;
 
 
@@ -27,13 +42,10 @@ public class Employee {
         this.id = id;
     }
 
-    @Id
-    @GeneratedValue
     public Long getId() {
         return id;
     }
 
-    @Basic
     public String getFirstName() {
         return firstName;
     }
@@ -42,7 +54,6 @@ public class Employee {
         this.firstName = firstName;
     }
 
-    @Basic
     public String getLastName() {
         return lastName;
     }
@@ -51,7 +62,6 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    @Basic
     public String getGender() {
         return gender;
     }
@@ -60,7 +70,6 @@ public class Employee {
         this.gender = gender;
     }
 
-    @Basic
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -69,7 +78,6 @@ public class Employee {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @Basic
     public String getAddress() {
         return address;
     }
@@ -77,8 +85,7 @@ public class Employee {
     public void setAddress(String address) {
         this.address = address;
     }
-
-    @Basic
+  
     public SalaryClass getSalaryClass() {
         return salaryClass;
     }
@@ -87,7 +94,6 @@ public class Employee {
         this.salaryClass = salaryClass;
     }
 
-    @Basic
     public String getMonthlySalary() {
         return monthlySalary;
     }
@@ -96,7 +102,6 @@ public class Employee {
         this.monthlySalary = monthlySalary;
     }
 
-    @Basic
     public String getBonus() {
         return bonus;
     }
@@ -105,7 +110,6 @@ public class Employee {
         this.bonus = bonus;
     }
 
-    @Basic
     public TaxClass getTaxClass() {
         return taxClass;
     }
@@ -114,7 +118,6 @@ public class Employee {
         this.taxClass = taxClass;
     }
 
-    @Basic
     public String getReligion() {
         return religion;
     }
@@ -123,7 +126,6 @@ public class Employee {
         this.religion = religion;
     }
 
-    @Basic
     public WorkingTime getWorkingTime() {
         return workingTime;
     }
@@ -131,8 +133,7 @@ public class Employee {
     public void setWorkingTime(WorkingTime workingTime) {
         this.workingTime = workingTime;
     }
-
-    @Basic
+  
     public String getBankAccount() {
         return bankAccount;
     }

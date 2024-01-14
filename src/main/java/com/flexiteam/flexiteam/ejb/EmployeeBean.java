@@ -3,8 +3,9 @@ package com.flexiteam.flexiteam.ejb;
 import com.flexiteam.flexiteam.commons.SalaryClass;
 import com.flexiteam.flexiteam.commons.TaxClass;
 import com.flexiteam.flexiteam.commons.WorkingTime;
-import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
-import com.flexiteam.flexiteam.dtos.EmployeeDto;
+import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
+import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
+import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
 import com.flexiteam.flexiteam.entities.Employee;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Stateless
-public class EmployeeBean {
+public class EmployeeBean implements IEmployeeBean {
     private static final Logger LOG = Logger.getLogger(EmployeeBean.class.getName());
 
     @PersistenceContext
