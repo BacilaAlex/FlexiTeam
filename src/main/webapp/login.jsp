@@ -9,7 +9,7 @@
             <div class="font color-secondary text-center font-md ">Empower Collaboration</div>
         </div>
         <c:if test="${message != null}">
-            <div role="alert"> ${message}</div>
+            <div class="font " style="color: red" role="alert"> ${message}</div>
 
         </c:if>
         <form method="POST" action="j_security_check" class="flex justify-center flex-col gap-2">
