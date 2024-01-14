@@ -3,7 +3,7 @@ package com.flexiteam.flexiteam.servlets;
 import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
 import com.flexiteam.flexiteam.dtos.User.UserDto;
 import com.flexiteam.flexiteam.ejb.EmployeeBean;
-import com.flexiteam.flexiteam.ejb.UsersBean;
+import com.flexiteam.flexiteam.ejb.UserBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ import java.util.List;
 public class EditUser extends HttpServlet {
 
     @Inject
-    UsersBean usersBean;
+    UserBean userBean;
 
     @Inject
     EmployeeBean employeeBean;
@@ -26,7 +26,7 @@ public class EditUser extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long userId = Long.parseLong(request.getParameter("id"));
-        UserDto user = usersBean.findUserById(userId);
+        UserDto user = userBean.findUserById(userId);
         request.setAttribute("user", user);
 
         List<EmployeeDto> employees = employeeBean.findAllEmployees();
@@ -44,7 +44,7 @@ public class EditUser extends HttpServlet {
             Long employeeId = Long.parseLong(request.getParameter("employee_id"));
             Long userId = Long.parseLong(request.getParameter("user_id"));
 
-            usersBean.updateUser(userId, username, email, password, employeeId);
+            userBean.updateUser(userId, username, email, password, employeeId);
             response.sendRedirect(request.getContextPath() + "/Users");
         } catch (Exception e) {
             e.printStackTrace();
