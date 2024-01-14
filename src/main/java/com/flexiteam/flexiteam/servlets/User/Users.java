@@ -1,7 +1,7 @@
 package com.flexiteam.flexiteam.servlets.User;
 
 import com.flexiteam.flexiteam.dtos.User.UserDto;
-import com.flexiteam.flexiteam.ejb.UsersBean;
+import com.flexiteam.flexiteam.ejb.UserBean;
 import jakarta.annotation.security.DeclareRoles;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -24,11 +24,11 @@ import java.util.List;
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet {
     @Inject
-    UsersBean usersBean;
+    UserBean userBean;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<UserDto> users = usersBean.findAllUsers();
+        List<UserDto> users = userBean.findAllUsers();
         request.setAttribute("users", users);
         request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
     }
@@ -42,7 +42,7 @@ public class Users extends HttpServlet {
             for (String userId : userIdsString) {
                 userIds.add(Long.parseLong(userId));
             }
-            usersBean.deleteUsersById(userIds);
+            userBean.deleteUsersById(userIds);
         }
 
         response.sendRedirect(request.getContextPath() + "/Users");

@@ -140,7 +140,6 @@
             </div>
         </div>
         <hr class="mb-4">
-        <input type="hidden" name="employee_id" value="${employee.id}"/>
         <button class="btn btn-primary btn-lg" type="submit">Save</button>
     </form>
 </t:pageTemplate>

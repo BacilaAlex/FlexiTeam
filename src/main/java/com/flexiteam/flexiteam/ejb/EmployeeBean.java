@@ -34,6 +34,17 @@ public class EmployeeBean{
         }
     }
 
+    public List<EmployeeDto> findAllEmployeesWithoutUser() {
+        LOG.info("findAllEmployeesWithoutUser");
+        try {
+            TypedQuery<Employee> typedQuery = entityManager.createQuery("SELECT e FROM Employee e WHERE NOT EXISTS (SELECT u FROM User u WHERE u.employee.id = e.id)", Employee.class);
+            List<Employee> employees = typedQuery.getResultList();
+            return copyEmployeesToDto(employees);
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
+
     private List<EmployeeDto> copyEmployeesToDto(List<Employee> employees) {
         List<EmployeeDto> employeeDto = new ArrayList<>();
 

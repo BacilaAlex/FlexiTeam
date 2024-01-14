@@ -1,6 +1,7 @@
 package com.flexiteam.flexiteam.ejb;
 
 import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
+import com.flexiteam.flexiteam.dtos.User.CreateUserDto;
 import com.flexiteam.flexiteam.dtos.User.UserDto;
 import com.flexiteam.flexiteam.entities.Employee;
 import com.flexiteam.flexiteam.entities.User;
@@ -16,8 +17,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Stateless
-public class UsersBean {
-    private static final Logger LOG = Logger.getLogger(UsersBean.class.getName());
+public class UserBean {
+    private static final Logger LOG = Logger.getLogger(UserBean.class.getName());
 
     @Inject
     EmployeeBean employeeBean;
@@ -47,13 +48,22 @@ public class UsersBean {
         return usersDto;
     }
 
-    public User createUser(String username, String email, String password) {
-        LOG.info("createUser");
-        User newUser = new User();
-        newUser.setUsername(username);
-        newUser.setEmail(email);
-        newUser.setPassword(passwordBean.convertToSha256(password));
+    public void createUser(CreateUserDto createUser) {
+        LOG.info("createEmployee");
+
+        User newUser = createUserFromDto(createUser);
+
         entityManager.persist(newUser);
+    }
+
+    private User createUserFromDto(CreateUserDto createUser) {
+        User newUser = new User();
+
+        newUser.setUsername(createUser.getUsername());
+        newUser.setEmail(createUser.getEmail());
+        newUser.setPassword(createUser.getPassword());
+        newUser.setEmployee(entityManager.find(Employee.class, createUser.getEmployeeId()));
+
         return newUser;
     }
 

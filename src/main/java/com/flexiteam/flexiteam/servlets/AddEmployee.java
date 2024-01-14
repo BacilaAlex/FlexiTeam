@@ -25,7 +25,6 @@ public class AddEmployee extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("");
         request.getRequestDispatcher("/addEmployee.jsp").forward(request, response);
     }
 
