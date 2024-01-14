@@ -5,7 +5,6 @@ import com.flexiteam.flexiteam.commons.TaxClass;
 import com.flexiteam.flexiteam.commons.WorkingTime;
 import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
 import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
-import com.flexiteam.flexiteam.ejb.Interface.IEmployeeBean;
 import com.flexiteam.flexiteam.entities.Employee;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Stateless
-public class EmployeeBean implements IEmployeeBean {
+public class EmployeeBean{
     private static final Logger LOG = Logger.getLogger(EmployeeBean.class.getName());
 
     @PersistenceContext
@@ -58,8 +57,15 @@ public class EmployeeBean implements IEmployeeBean {
         return employeeDto;
     }
 
-    public Employee createEmployee(CreateEmployeeDto createEmployee) {
+    public void createEmployee(CreateEmployeeDto createEmployee) {
         LOG.info("createEmployee");
+
+        Employee newEmployee = createEmployeeFromDto(createEmployee);
+
+        entityManager.persist(newEmployee);
+    }
+
+    private Employee createEmployeeFromDto(CreateEmployeeDto createEmployee) {
         Employee newEmployee = new Employee();
 
         newEmployee.setFirstName(createEmployee.getFirstName());
@@ -75,7 +81,6 @@ public class EmployeeBean implements IEmployeeBean {
         newEmployee.setWorkingTime(createEmployee.getWorkingTime());
         newEmployee.setBankAccount(createEmployee.getBankAccount());
 
-        entityManager.persist(newEmployee);
         return newEmployee;
     }
 

@@ -8,7 +8,8 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="first_name" class="form-label">First Name</label>
-                <input name="first_name" type="text" class="form-control" id="first_name" required placeholder="" value="">
+                <input name="first_name" type="text" class="form-control" id="first_name" required placeholder=""
+                       value="">
                 <div class="invalid-feedback">
                     First Name is required.
                 </div>
@@ -17,7 +18,8 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="last_name" class="form-label">Last Name</label>
-                <input name="last_name" type="text" class="form-control" id="last_name" required placeholder="" value="">
+                <input name="last_name" type="text" class="form-control" id="last_name" required placeholder=""
+                       value="">
                 <div class="invalid-feedback">
                     Last Name is required.
                 </div>
@@ -39,7 +41,8 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="date_of_birth" class="form-label">Date of Birth</label>
-                <input name="date_of_birth" type="date" class="form-control" id="date_of_birth" required placeholder="" value="">
+                <input name="date_of_birth" type="date" class="form-control" id="date_of_birth" required placeholder=""
+                       value="">
                 <div class="invalid-feedback">
                     Date of Birth is required.
                 </div>
@@ -57,7 +60,8 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="monthly_salary" class="form-label">Monthly Salary(RON)</label>
-                <input name="monthly_salary" type="text" class="form-control" id="monthly_salary" required placeholder="" value="">
+                <input name="monthly_salary" type="text" class="form-control" id="monthly_salary" required
+                       placeholder="" value="">
                 <div class="invalid-feedback">
                     Monthly Salary is required.
                 </div>
@@ -92,8 +96,8 @@
                 <label for="salary_class" class="form-label">Salary Class</label>
                 <select name="salary_class" class="customer-select d-block w-100" id="salary_class" required>
                     <option value="">Choose...</option>
-                    <c:forEach items="${SalaryClass.values()}" var="salaryClass">
-                        <option value="${salaryClass}" ${employee.salaryClass == salaryClass ? 'selected' : ''}>
+                    <c:forEach items="${salaryClasses}" var="salaryClass">
+                        <option value="${salaryClass}">
                                 ${salaryClass}
                         </option>
                     </c:forEach>
@@ -108,8 +112,8 @@
                 <label for="tax_class" class="form-label">Tax Class</label>
                 <select name="tax_class" class="customer-select d-block w-100" id="tax_class" required>
                     <option value="">Choose...</option>
-                    <c:forEach items="${TaxClass.values()}" var="taxClass">
-                        <option value="${taxClass}" ${employee.taxClass == taxClass ? 'selected' : ''}>
+                    <c:forEach items="${taxClasses}" var="taxClass">
+                        <option value="${taxClass}">
                                 ${taxClass}
                         </option>
                     </c:forEach>
@@ -124,8 +128,8 @@
                 <label for="working_time" class="form-label">Working Time</label>
                 <select name="working_time" class="customer-select d-block w-100" id="working_time" required>
                     <option value="">Choose...</option>
-                    <c:forEach items="${WorkingTime.values()}" var="workingTime">
-                        <option value="${workingTime}" ${employee.workingTime == workingTime ? 'selected' : ''}>
+                    <c:forEach items="${workingTimes}" var="workingTime">
+                        <option value="${workingTime}">
                                 ${workingTime}
                         </option>
                     </c:forEach>

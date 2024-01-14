@@ -3,10 +3,8 @@ package com.flexiteam.flexiteam.servlets;
 import com.flexiteam.flexiteam.commons.SalaryClass;
 import com.flexiteam.flexiteam.commons.TaxClass;
 import com.flexiteam.flexiteam.commons.WorkingTime;
-import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
-import com.flexiteam.flexiteam.dtos.EmployeeDto;
+import com.flexiteam.flexiteam.dtos.Employee.EmployeeDto;
 import com.flexiteam.flexiteam.ejb.EmployeeBean;
-import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,10 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 @WebServlet(name = "EditEmployee", value = "/EditEmployee")
 public class EditEmployee extends HttpServlet {

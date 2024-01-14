@@ -3,7 +3,7 @@ package com.flexiteam.flexiteam.servlets;
 import com.flexiteam.flexiteam.commons.SalaryClass;
 import com.flexiteam.flexiteam.commons.TaxClass;
 import com.flexiteam.flexiteam.commons.WorkingTime;
-import com.flexiteam.flexiteam.dtos.CreateEmployeeDto;
+import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
 import com.flexiteam.flexiteam.ejb.EmployeeBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -25,6 +25,7 @@ public class AddEmployee extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("");
         request.getRequestDispatcher("/addEmployee.jsp").forward(request, response);
     }
 
