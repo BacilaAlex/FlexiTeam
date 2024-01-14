@@ -4,5 +4,4 @@ public enum SalaryClass {
     Lecturers,
     AssociateProfessors,
     Executive,
-    Employee
 }
