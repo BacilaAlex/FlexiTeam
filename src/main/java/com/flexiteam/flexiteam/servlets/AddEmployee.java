@@ -25,6 +25,9 @@ public class AddEmployee extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("salaryClasses", SalaryClass.values());
+        request.setAttribute("taxClasses", TaxClass.values());
+        request.setAttribute("workingTimes", WorkingTime.values());
         request.getRequestDispatcher("/addEmployee.jsp").forward(request, response);
     }
 
@@ -34,7 +37,7 @@ public class AddEmployee extends HttpServlet {
             String firstName = request.getParameter("first_name");
             String lastName = request.getParameter("last_name");
             String gender = request.getParameter("gender");
-            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             Date dateOfBirth = df.parse(request.getParameter("date_of_birth"));
             String address = request.getParameter("address");
             SalaryClass salaryClass = SalaryClass.valueOf(request.getParameter("salary_class"));
@@ -50,7 +53,7 @@ public class AddEmployee extends HttpServlet {
             );
             response.sendRedirect(request.getContextPath() + "/Employees");
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
