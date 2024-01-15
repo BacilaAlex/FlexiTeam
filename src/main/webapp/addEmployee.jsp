@@ -85,7 +85,7 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="bank_account" class="form-label">Bank Account</label>
-                <input name="bank_account" type="text" class="form-control" id="bank_account" value="">
+                <input name="bank_account" type="text" class="form-control" id="bank_account" required value="">
                 <div class="invalid-feedback">
                     Bank Account is required.
                 </div>
