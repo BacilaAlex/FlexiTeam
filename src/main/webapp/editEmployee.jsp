@@ -8,29 +8,41 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="first_name" class="form-label">First Name</label>
-        <input name="first_name" type="text" class="form-control" id="first_name" placeholder="${employee.firstName}"
+        <input name="first_name" type="text" class="form-control" id="first_name" required placeholder="${employee.firstName}"
                value="${employee.firstName}">
+        <div class="invalid-feedback">
+          First Name is required.
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="last_name" class="form-label">Last Name</label>
-        <input name="last_name" type="text" class="form-control" id="last_name" placeholder="${employee.lastName}"
+        <input name="last_name" type="text" class="form-control" id="last_name" required placeholder="${employee.lastName}"
                value="${employee.lastName}">
+        <div class="invalid-feedback">
+          Last Name is required.
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="address" class="form-label">Address</label>
-        <input name="address" type="text" class="form-control" id="address" placeholder="${employee.address}"
+        <input name="address" type="text" class="form-control" id="address" required placeholder="${employee.address}"
                value="${employee.address}">
+        <div class="invalid-feedback">
+          Address is required.
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="monthly_salary" class="form-label">Monthly Salary(RON)</label>
-        <input name="monthly_salary" type="text" class="form-control" id="monthly_salary" placeholder="${employee.monthlySalary}"
+        <input name="monthly_salary" type="text" class="form-control" id="monthly_salary" required placeholder="${employee.monthlySalary}"
                value="${employee.monthlySalary}">
+        <div class="invalid-feedback">
+          Monthly Salary is required.
+        </div>
       </div>
     </div>
     <div class="row">
@@ -42,15 +54,21 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="religion" class="form-label">Religion</label>
-        <input name="religion" type="text" class="form-control" id="religion" placeholder="${employee.religion}"
+        <input name="religion" type="text" class="form-control" id="religion" required placeholder="${employee.religion}"
                value="${employee.religion}">
+        <div class="invalid-feedback">
+          Religion is required.
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="bank_account" class="form-label">Bank Account</label>
-        <input name="bank_account" type="text" class="form-control" id="bank_account" placeholder="${employee.bankAccount}"
+        <input name="bank_account" type="text" class="form-control" id="bank_account" required placeholder="${employee.bankAccount}"
                value="${employee.bankAccount}">
+        <div class="invalid-feedback">
+          Bank Account is required.
+        </div>
       </div>
     </div>
     <div class="row">

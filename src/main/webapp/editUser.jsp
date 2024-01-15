@@ -8,22 +8,31 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="username" class="form-label">Username</label>
-        <input name="username" type="text" class="form-control" id="username" default="${user.username}" placeholder="${user.username}"
+        <input name="username" type="text" class="form-control" id="username" required default="${user.username}" placeholder="${user.username}"
                value="${user.username}">
+        <div class="invalid-feedback">
+          Username is required.
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="email" class="form-label">Email</label>
-        <input name="email" type="email" class="form-control" id="email" default="${user.email}" placeholder="${user.email}"
+        <input name="email" type="email" class="form-control" id="email" required default="${user.email}" placeholder="${user.email}"
                value="${user.email}">
+        <div class="invalid-feedback">
+          Email is required.
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="password" class="form-label">Password</label>
-        <input name="password" type="password" class="form-control" id="password" default="${user.password}" placeholder="${user.password}"
+        <input name="password" type="password" class="form-control" id="password" required default="${user.password}" placeholder="${user.password}"
                value="${user.password}">
+        <div class="invalid-feedback">
+          Password is required.
+        </div>
       </div>
     </div>
     <div class="row">
