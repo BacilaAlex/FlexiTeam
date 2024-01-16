@@ -1,4 +1,4 @@
-package com.flexiteam.flexiteam.servlets;
+package com.flexiteam.flexiteam.servlets.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
