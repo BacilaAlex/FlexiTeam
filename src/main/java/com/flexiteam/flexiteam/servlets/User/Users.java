@@ -17,10 +17,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@DeclareRoles({"READ_USERS", "WRITE_USERS"})
+/*@DeclareRoles({"READ_USERS", "WRITE_USERS"})
 @ServletSecurity(value = @HttpConstraint(rolesAllowed = {"READ_USERS"}),
         httpMethodConstraints = {@HttpMethodConstraint(value = "POST",
-                rolesAllowed = {"WRITE_USERS"})})
+                rolesAllowed = {"WRITE_USERS"})})*/
 @WebServlet(name = "Users", value = "/Users")
 public class Users extends HttpServlet {
     @Inject
@@ -30,7 +30,7 @@ public class Users extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<UserDto> users = userBean.findAllUsers();
         request.setAttribute("users", users);
-        request.getRequestDispatcher("/WEB-INF/pages/users.jsp").forward(request, response);
+        request.getRequestDispatcher("/users.jsp").forward(request, response);
     }
 
     @Override
