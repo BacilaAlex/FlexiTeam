@@ -43,7 +43,7 @@ public class UserBean {
         List<UserDto> usersDto = new ArrayList<>();
         for (User user :
                 users) {
-            usersDto.add(new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword()));
+            usersDto.add(new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getEmployee()));
         }
         return usersDto;
     }
@@ -68,8 +68,8 @@ public class UserBean {
     }
 
     public UserDto findUserById(Long id) {
-        for(UserDto user : findAllUsers()){
-            if(user.getId().equals(id))
+        for (UserDto user : findAllUsers()) {
+            if (user.getId().equals(id))
                 return user;
         }
         return null;
