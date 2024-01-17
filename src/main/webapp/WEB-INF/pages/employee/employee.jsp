@@ -21,7 +21,7 @@
             <div class="circle">
             </div>
             <div class="div2">
-                <div class="container mt-3">
+                <div class="mt-3">
                     <div style="display: flex;justify-content: space-between">
                     <h2>All Employees</h2>
                     <a href="${pageContext.request.contextPath}/AddEmployee"><button>Add Employee</button></a>
@@ -40,7 +40,7 @@
                             <th>Bonus</th>
                             <th>Tax Class</th>
                             <th>Religion</th>
-                            <th>Working Time</th>
+<%--                            <th>Working Time</th>--%>
                             <th>Bank Account</th>
                             <th>Edit</th>
                         </tr>
@@ -59,7 +59,7 @@
                                 <td>${employee.bonus}</td>
                                 <td>${employee.taxClass}</td>
                                 <td>${employee.religion}</td>
-                                <td>${employee.workingTime}</td>
+<%--                                <td>${employee.workingTime}</td>--%>
                                 <td>${employee.bankAccount}</td>
                                 <td><a href="${pageContext.request.contextPath}/EditEmployee?id=${employee.id}"><button>Edit employee</button></a></td>
                             </tr>
@@ -91,7 +91,7 @@
     .div2{
         background-color: white;
         height: 86%;
-        width: 95%;
+        width: 93%;
         min-width: 15%;
         border-radius: 15px;
         align-self: center;
@@ -102,7 +102,7 @@
         display: flex;
         flex-direction: row;
         /*flex-wrap: wrap;*/
-        gap: 80px;
+        gap: 30px;
         height:100%;
     }
     .w13{

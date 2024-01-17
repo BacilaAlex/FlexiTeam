@@ -24,7 +24,7 @@
         <div class="container mt-3">
           <div style="display: flex;justify-content: space-between">
             <h2>All Users</h2>
-            <a href="${pageContext.request.contextPath}/AddUsers"><button>Add Users</button></a>
+            <a href="${pageContext.request.contextPath}/AddUser"><button>Add Users</button></a>
           </div>
           <table class="table table-bordered">
             <thead>
