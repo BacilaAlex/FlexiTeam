@@ -41,7 +41,7 @@
         <select class="form-select" id="employee_id" name="employee_id" required>
           <option value="">Choose...</option>
           <c:forEach var="employee" items="${employees}" varStatus="status">
-            <option value="${employee.id}"${user.employee eq (employee.firstName && employee.lastName) ? 'selected' : ''}>${employee.firstName} ${employee.lastName}</option>
+            <option value="${employee.id}"${user.employeeId eq employee.id ? 'selected' : ''}>${employee.firstName} ${employee.lastName}</option>
           </c:forEach>
         </select>
         <div class="invalid-feedback">
