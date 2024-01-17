@@ -10,10 +10,6 @@ public class UserDto {
     String password;
     Long employeeId;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getEmployeeId() {
         return employeeId;
     }
