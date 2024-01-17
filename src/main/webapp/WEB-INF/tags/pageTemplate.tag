@@ -3,8 +3,12 @@
 <html>
 <head>
     <style>
+
         .gap-2{
             gap:4px;
+        }
+        .gap-6{
+            gap:20px;
         }
         .flex{
             display: flex;
@@ -99,6 +103,10 @@
 
          background-image: url("https://i.postimg.cc/kMVjtzww/Background-Image.png");
          background-size: cover;
+     }
+     div{
+         font-family: 'Oswald', sans-serif;
+         font-size: 24px;
      }
      @font-face {
          font-family: 'Oswald', sans-serif;
