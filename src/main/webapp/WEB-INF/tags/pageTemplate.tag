@@ -8,8 +8,12 @@
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
     <style>
+
         .gap-2{
             gap:4px;
+        }
+        .gap-6{
+            gap:20px;
         }
         .flex{
             display: flex;
@@ -104,6 +108,10 @@
 
          background-image: url("https://i.postimg.cc/kMVjtzww/Background-Image.png");
          background-size: cover;
+     }
+     div{
+         font-family: 'Oswald', sans-serif;
+         font-size: 24px;
      }
      @font-face {
          font-family: 'Oswald', sans-serif;
