@@ -57,7 +57,7 @@
                         <tbody>
                         <c:forEach var="employee" items="${employees}">
                             <tr>
-                                <td>${employee.id}</td>
+                                <td><a href="${pageContext.request.contextPath}/SalarySheet?id=${employee.id}">${employee.id}</a></td>
                                 <td>${employee.firstName}</td>
                                 <td>${employee.lastName}</td>
                                 <td>${employee.gender}</td>
