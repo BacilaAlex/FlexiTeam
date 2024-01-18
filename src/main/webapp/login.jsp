@@ -10,7 +10,6 @@
         </div>
         <c:if test="${message != null}">
             <div class="font " style="color: red" role="alert"> ${message}</div>
-
         </c:if>
         <form method="POST" action="j_security_check" class="flex justify-center flex-col gap-2">
             <input type="text" name="j_username" placeholder="username" class="text-center" required autofocus/>
