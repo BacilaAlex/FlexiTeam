@@ -7,6 +7,6 @@
 </t:pageTemplate>
 <script>
     function navigateToHome() {
-        window.location.href = '/FlexiTeam-1.0-SNAPSHOT/home.jsp';
+        window.location.href = '/FlexiTeam-1.0-SNAPSHOT/Employees';
     }
 </script>

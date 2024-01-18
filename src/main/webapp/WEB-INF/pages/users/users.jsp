@@ -11,7 +11,7 @@
       <div class="div1">
         <ul class="list-group">
           <li class="list-group-item"><a href="login.jsp">To Login</a></li>
-          <li class="list-group-item"><a href="${pageContext.request.contextPath}/Users">Users</a></li>
+          <li class="list-group-item active"><a href="${pageContext.request.contextPath}/Users">Users</a></li>
           <li class="list-group-item"><a href="${pageContext.request.contextPath}/Employees">Employees</a></li>
         </ul>
       </div>
@@ -19,6 +19,10 @@
 
     <div class="flex div_cu_bulinuta ">
       <div class="circle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+        </svg>
       </div>
       <div class="div2">
         <div class="container mt-3">
@@ -32,7 +36,6 @@
               <th>ID</th>
               <th>Username</th>
               <th>Email</th>
-              <!-- Add other user-related columns as needed -->
               <th>Edit</th>
             </tr>
             </thead>
@@ -42,7 +45,6 @@
                 <td>${user.id}</td>
                 <td>${user.username}</td>
                 <td>${user.email}</td>
-                <!-- Add other user-related columns as needed -->
                 <td><a href="${pageContext.request.contextPath}/EditUser?id=${user.id}"><button>Edit User</button></a></td>
               </tr>
             </c:forEach>
