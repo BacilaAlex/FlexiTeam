@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<t:pageTemplate pageTitle="Employees">
-
+<t:pageTemplate pageTitle="Users">
   <div class="flex_justify_between">
     <div class="flex_row">
       <h1 class="font w13">FlexiTeam ®</h1>
@@ -17,7 +16,7 @@
       </div>
     </div>
 
-    <div class="flex div_cu_bulinuta ">
+    <div class="flex div_cu_bulinuta">
       <div class="circle">
         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
@@ -28,7 +27,10 @@
         <div class="container mt-3">
           <div style="display: flex;justify-content: space-between">
             <h2>All Users</h2>
-            <a href="${pageContext.request.contextPath}/AddUser"><button>Add Users</button></a>
+            <form action="${pageContext.request.contextPath}/Users" method="post">
+              <button type="submit">Delete Selected Users</button>
+              <a href="${pageContext.request.contextPath}/AddUser"><button>Add Users</button></a>
+            </form>
           </div>
           <table class="table table-bordered">
             <thead>
@@ -37,6 +39,7 @@
               <th>Username</th>
               <th>Email</th>
               <th>Edit</th>
+              <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -46,6 +49,7 @@
                 <td>${user.username}</td>
                 <td>${user.email}</td>
                 <td><a href="${pageContext.request.contextPath}/EditUser?id=${user.id}"><button>Edit User</button></a></td>
+                <td><input type="checkbox" name="user_ids" value="${employee.id}"></td>
               </tr>
             </c:forEach>
             </tbody>
@@ -53,7 +57,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
 
 </t:pageTemplate>
@@ -86,7 +89,7 @@
     display: flex;
     flex-direction: row;
     /*flex-wrap: wrap;*/
-    gap: 80px;
+    gap: 40px;
     height:100%;
   }
   .w13{
