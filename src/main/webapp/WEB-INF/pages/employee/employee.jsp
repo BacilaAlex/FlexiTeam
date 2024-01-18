@@ -51,7 +51,7 @@
 <%--                            <th>Working Time</th>--%>
                             <th>Bank Account</th>
                             <th>Edit</th>
-                            <th>Deletew</th>
+                            <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
