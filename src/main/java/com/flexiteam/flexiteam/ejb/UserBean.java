@@ -80,6 +80,7 @@ public class UserBean {
 
         user.setUsername(username);
         user.setEmail(email);
+        if(password != null && !password.trim().isEmpty())
         user.setPassword(passwordBean.convertToSha256(password));
 
         Employee employee = entityManager.find(Employee.class, employeeId);
