@@ -26,9 +26,13 @@
             </div>
             <div class="div2">
                 <div class="mt-3">
+                    <form action="${pageContext.request.contextPath}/Employees" method="post">
                     <div style="display: flex;justify-content: space-between">
                     <h2>All Employees</h2>
+                        <div style="display: flex;gap: 20px;">
+                            <button type="submit">Delete Selected Employees</button>
                     <a href="${pageContext.request.contextPath}/AddEmployee"><button>Add Employee</button></a>
+                        </div>
                     </div>
                         <table class="table table-bordered">
                         <thead>
@@ -47,6 +51,7 @@
 <%--                            <th>Working Time</th>--%>
                             <th>Bank Account</th>
                             <th>Edit</th>
+                            <th>Deletew</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -66,10 +71,13 @@
 <%--                                <td>${employee.workingTime}</td>--%>
                                 <td>${employee.bankAccount}</td>
                                 <td><a href="${pageContext.request.contextPath}/EditEmployee?id=${employee.id}"><button>Edit employee</button></a></td>
+                                <td><input type="checkbox" name="employee_ids" value="${employee.id}"></td>
+
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
+                    </form>
                 </div>
             </div>
             </div>
