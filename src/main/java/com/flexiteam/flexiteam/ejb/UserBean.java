@@ -61,7 +61,7 @@ public class UserBean {
 
         newUser.setUsername(createUser.getUsername());
         newUser.setEmail(createUser.getEmail());
-        newUser.setPassword(createUser.getPassword());
+        newUser.setPassword(passwordBean.convertToSha256(createUser.getPassword()));
         newUser.setEmployee(entityManager.find(Employee.class, createUser.getEmployeeId()));
 
         return newUser;
@@ -80,7 +80,8 @@ public class UserBean {
 
         user.setUsername(username);
         user.setEmail(email);
-        user.setPassword(password);
+        if(password != null && !password.trim().isEmpty())
+        user.setPassword(passwordBean.convertToSha256(password));
 
         Employee employee = entityManager.find(Employee.class, employeeId);
         user.setEmployee(employee);
