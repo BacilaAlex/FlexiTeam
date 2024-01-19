@@ -5,6 +5,7 @@ import com.flexiteam.flexiteam.dtos.User.CreateUserDto;
 import com.flexiteam.flexiteam.dtos.User.UserDto;
 import com.flexiteam.flexiteam.entities.Employee;
 import com.flexiteam.flexiteam.entities.User;
+import com.flexiteam.flexiteam.entities.UserGroup;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -13,6 +14,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -24,7 +26,6 @@ public class UserBean {
     EmployeeBean employeeBean;
     @Inject
     PasswordBean passwordBean;
-
     @PersistenceContext
     EntityManager entityManager;
 
@@ -33,6 +34,7 @@ public class UserBean {
         try {
             TypedQuery<User> typedQuery = entityManager.createQuery("SELECT u FROM User u", User.class);
             List<User> users = typedQuery.getResultList();
+
             return copyUsersToDto(users);
         } catch (Exception ex) {
             throw new EJBException(ex);
@@ -41,19 +43,33 @@ public class UserBean {
 
     private List<UserDto> copyUsersToDto(List<User> users) {
         List<UserDto> usersDto = new ArrayList<>();
+
         for (User user :
                 users) {
-            usersDto.add(new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(),user.getEmployee().getId()));
+            usersDto.add(new UserDto(user.getId(), user.getUsername(), user.getEmail(), user.getPassword(), user.getEmployee().getId()));
         }
+
         return usersDto;
     }
 
-    public void createUser(CreateUserDto createUser) {
+    public void createUser(CreateUserDto createUser, Collection<String> groups) {
         LOG.info("createEmployee");
 
         User newUser = createUserFromDto(createUser);
+        assignGroupsToUser(newUser.getUsername(), groups);
 
         entityManager.persist(newUser);
+    }
+
+    private void assignGroupsToUser(String username, Collection<String> groups) {
+        LOG.info("assignGroupsToUser");
+
+        for (String group : groups) {
+            UserGroup userGroup = new UserGroup();
+            userGroup.setUsername(username);
+            userGroup.setUserGroup(group);
+            entityManager.persist(userGroup);
+        }
     }
 
     private User createUserFromDto(CreateUserDto createUser) {
@@ -68,10 +84,11 @@ public class UserBean {
     }
 
     public UserDto findUserById(Long id) {
-        for(UserDto user : findAllUsers()){
-            if(user.getId().equals(id))
+        for (UserDto user : findAllUsers()) {
+            if (user.getId().equals(id))
                 return user;
         }
+
         return null;
     }
 
@@ -80,8 +97,9 @@ public class UserBean {
 
         user.setUsername(username);
         user.setEmail(email);
-        if(password != null && !password.trim().isEmpty())
-        user.setPassword(passwordBean.convertToSha256(password));
+
+        if (password != null && !password.trim().isEmpty())
+            user.setPassword(passwordBean.convertToSha256(password));
 
         Employee employee = entityManager.find(Employee.class, employeeId);
         user.setEmployee(employee);

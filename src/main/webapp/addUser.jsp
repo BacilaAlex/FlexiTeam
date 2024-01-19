@@ -51,6 +51,20 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="user_groups">Group</label>
+                <select class="custom-select d-block w-100" id="user_groups" name="user_groups" required>
+                    <option value="">Choose...</option>
+                    <c:forEach var="user_group" items="${userGroups}" varStatus="status">
+                        <option value="${user_group}">${user_group}</option>
+                    </c:forEach>
+                </select>
+                <div class="invalid-feedback">
+                    Group is required.
+                </div>
+            </div>
+        </div>
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg" type="submit">Save</button>
     </form>
