@@ -7,6 +7,8 @@ import com.flexiteam.flexiteam.dtos.Employee.CreateEmployeeDto;
 import com.flexiteam.flexiteam.ejb.EmployeeBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.HttpConstraint;
+import jakarta.servlet.annotation.ServletSecurity;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@ServletSecurity(value = @HttpConstraint(rolesAllowed = {"WRITE_EMPLOYEES"}))
 @WebServlet(name = "AddEmployee", value = "/AddEmployee")
 public class AddEmployee extends HttpServlet {
 
